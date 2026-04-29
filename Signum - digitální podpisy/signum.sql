@@ -1,0 +1,23 @@
+CREATE DATABASE IF NOT EXISTS client_system;
+USE client_system;
+
+CREATE TABLE CLIENTS (
+    id INT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+    firstname VARCHAR(40) NOT NULL,
+    lastname VARCHAR(60) NOT NULL,
+    birthdate DATE NOT NULL,
+    street VARCHAR(40) NOT NULL,
+    housenum VARCHAR(10),
+    postal VARCHAR(5),
+    city VARCHAR(40),
+    username VARCHAR(20) NOT NULL,
+    passwd VARCHAR(128) NOT NULL,
+    email VARCHAR(255),
+    phone VARCHAR(20)
+);
+CREATE TABLE CERTIFICATES (
+    id INT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+    clients_id INT UNSIGNED NOT NULL,
+    certifkey VARCHAR(16) NOT NULL UNIQUE,
+    FOREIGN KEY (clients_id) REFERENCES CLIENTS(id) ON DELETE CASCADE
+);
